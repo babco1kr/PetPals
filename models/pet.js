@@ -2,4 +2,3 @@
 $('#user-account').click(function(){
     //do something
   });
-  

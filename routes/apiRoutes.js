@@ -49,40 +49,36 @@ module.exports = function(app) {
     }
   });
 
-
-
-
   //sequelize statements for user
   // "/user/:id"
-app.get("/user/:id", function(req,res) {
-  res.json({
-    email: req.user.email,
-    id: req.user.id
+  app.get("/user/:id", function(req, res) {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
   });
-})
 
-//sequelize search route
-app.get("/search", function(req,res){
-  db.Pet.findAll({}).then(function(data){
-    let object = {
-      pets: data
-    };
-    res.render("search", object)
+  //sequelize search route
+  app.get("/search", function(req, res) {
+    db.Pet.findAll({}).then(function(data) {
+      var object = {
+        pets: data
+      };
+      res.render("search", object);
+    });
   });
-});
 
-//sequelize search type for a search filter
-app.get("/search/:type", function(req, res){
-  db.Pet.findAll({
-    where: {
-      type: req.params.type
-    }
-  }).then(function(dbPet){
+  //sequelize search type for a search filter
+  app.get("/search/:type", function(req, res) {
+    db.Pet.findAll({
+      where: {
+        type: req.params.type
+      }
+    }).then(function(dbPet) {
       res.json(dbPet);
+    });
   });
-
-});
-}
+};
 
 // // =============================================================
 // var Book = require("../models/book.js");

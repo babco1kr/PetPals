@@ -1,5 +1,5 @@
 var db = require("../models");
-var passport = require("../config/passport");
+var passport = require("../config/passport.js");
 
 module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -48,26 +48,60 @@ module.exports = function(app) {
       });
     }
   });
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
+
+
+
+
+  //sequelize statements for user
+  // "/user/:id"
+app.get("/user/:id", function(req,res) {
+  res.json({
+    email: req.user.email,
+    id: req.user.id
+  });
+})
+
+//sequelize search route
+app.get("/search", function(req,res){
+  db.Pet.findAll({}).then(function(data){
+    let object = {
+      pets: data
+    };
+    res.render("search", object)
+  });
+});
+
+//sequelize search type for a search filter
+app.get("/search/:type", function(req, res){
+  db.Pet.findAll({
+    where: {
+      type: req.params.type
+    }
+  }).then(function(dbPet){
+      res.json(dbPet);
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+});
+}
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
-};
+// // =============================================================
+// var Book = require("../models/book.js");
+
+// // Routes
+// // =============================================================
+// module.exports = function(app) {
+//   // Get all books
+//   app.get("/api/all", function(req, res) {
+//     Book.findAll({}).then(function(results) {
+//       res.json(results);
+//     });
+//   });
+
+//   // Get a specific book
+//   app.get("/api/:book", function(req, res) {
+//     Book.findAll({
+//       where: {
+//         title: req.params.book
+//       }
+//     }).then(function(results) {
+//       res.json(results);

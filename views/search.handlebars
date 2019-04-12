@@ -1,10 +1,10 @@
 
-  <div class="input-field col s12">
+  <div id="animal" class="input-field col s12">
     <select>
       <option value="" disabled selected>Select A Pet Type</option>
-      <option value="1">Dog</option>
-      <option value="2">Cat</option>
-      <option value="3">Bird</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="bird">Bird</option>
     </select>
   </div>
   
@@ -16,6 +16,6 @@
      <p>{{this.locaton}}</p>
      <p>{{this.price}}</p>
 
-     <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Search for Pets</button>
+     <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Select this Pet</button>
   {{/each}}
 </div>

@@ -11,7 +11,7 @@ $(document).ready(function() {
   //   });
   // });
 
-  // $('select').formSelect();
+  $('select').formSelect();
 
   $("#users-account").on("click", function(event) {
     event.preventDefault();

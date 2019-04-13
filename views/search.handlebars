@@ -1,23 +1,34 @@
-
-  <div id="animal" class="input-field col s12">
+<div class="container">
+  <div class="row">
+    <div class = "col s5">
+    <div id="animal" class="input-field">
     <select id = "animalType">
       <option value="" disabled selected>Select A Pet Type</option>
       <option value="dog">Dog</option>
       <option value="cat">Cat</option>
       <option value="bird">Bird</option>
     </select>
-    <a id= "selectpetbtn"class="waves-effect waves-light btn-large">Button</a>
-
+    </div>
+    </div>
+    <div class = "col s5">
+    <div class="input-field">
+          <input placeholder="location" id="zipCodeSearch" type="text" class="validate">
+          <label for="ZipCode">Zip Code</label>
+        </div>
   </div>
-  
+  <div class = "col s2">
+    <a id= "selectpetbtn"class="waves-effect waves-light btn-large">Select</a>
+</div>
+  </div>
 <div>
   {{#each pets}}
     
      <h2> {{this.petName}} </h2>
-     <div><img src = "{{this.pictureLink}}"></div>
+     <div><img class="petimage" src = "{{this.pictureLink}}"></div>
      <p>{{this.locaton}}</p>
      <p>{{this.price}}</p>
 
      <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Select this Pet</button>
   {{/each}}
+</div>
 </div>

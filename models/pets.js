@@ -26,5 +26,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   });
+
+  // Assigns pet to the user creating it
+  Pet.associate = function(models) {
+    Pet.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Pet;
 };

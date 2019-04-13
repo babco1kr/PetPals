@@ -16,6 +16,12 @@ $(document).ready(function() {
     });
   });
 
+  $("#searchPets").on("click", function(event) {
+    event.preventDefault();
+
+    window.location.href = "/search/";
+  });
+
   $("#users-account").on("click", function(event) {
     event.preventDefault();
     var id = $(this).data("id");

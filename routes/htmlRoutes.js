@@ -25,6 +25,20 @@ module.exports = function(app) {
   app.get("/index", isAuthenticated, function(req, res) {
     res.render("index");
   });
+
+  //sequelize search route
+  app.get("/search", isAuthenticated, function(req, res) {
+    db.Pet.findAll({}).then(function(data) {
+      var object = {
+        pets: data
+      };
+      res.render("search", object);
+    });
+  });
+
+  // app.get("/user", isAuthenticated, function(req, res) {
+  //   res.render("user");
+  // });
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(

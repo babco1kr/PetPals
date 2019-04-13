@@ -52,20 +52,16 @@ module.exports = function(app) {
   //sequelize statements for user
   // "/user/:id"
   app.get("/user/:id", function(req, res) {
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
-  });
-
-  //sequelize search route
-  app.get("/search", function(req, res) {
-    db.Pet.findAll({}).then(function(data) {
-      var object = {
-        pets: data
-      };
-      res.render("search", object);
-    });
+    //This makes sure the current user can only access their user page
+    if (req.user.id.toString() === req.params.id.toString()) {
+      db.User.findAll({
+        where: { id: req.params.id }
+      }).then(function(data) {
+        res.render("user", data);
+      });
+    } else {
+      res.redirect("/index");
+    }
   });
 
   //sequelize search type for a search filter
@@ -78,26 +74,19 @@ module.exports = function(app) {
       res.json(dbPet);
     });
   });
+
+  app.post("/api/pets", function(req, res) {
+    console.log("Pet Added");
+    db.Pet.create({
+      petName: req.body.petName,
+      petType: req.body.petType,
+      pictureLink: req.body.pictureLink,
+      location: req.body.location,
+      price: req.body.price,
+      body: req.body.body,
+      UserId: req.body.UserId
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };
-
-// // =============================================================
-// var Book = require("../models/book.js");
-
-// // Routes
-// // =============================================================
-// module.exports = function(app) {
-//   // Get all books
-//   app.get("/api/all", function(req, res) {
-//     Book.findAll({}).then(function(results) {
-//       res.json(results);
-//     });
-//   });
-
-//   // Get a specific book
-//   app.get("/api/:book", function(req, res) {
-//     Book.findAll({
-//       where: {
-//         title: req.params.book
-//       }
-//     }).then(function(results) {
-//       res.json(results);

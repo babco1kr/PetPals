@@ -11,6 +11,8 @@ $(document).ready(function() {
   //   });
   // });
 
+  // $('select').formSelect();
+
   $("#users-account").on("click", function(event) {
     event.preventDefault();
     var id = $(this).data("id");

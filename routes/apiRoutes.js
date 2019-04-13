@@ -68,10 +68,14 @@ module.exports = function(app) {
   app.get("/search/:type", function(req, res) {
     db.Pet.findAll({
       where: {
-        type: req.params.type
+        petType: req.params.type
       }
-    }).then(function(dbPet) {
-      res.json(dbPet);
+    }).then(function(data) {
+      console.log(data);
+      var object = {
+        pets: data
+      };
+      res.render("search", object);
     });
   });
 

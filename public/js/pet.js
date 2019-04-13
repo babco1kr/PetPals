@@ -8,6 +8,7 @@ $(document).ready(function() {
       .val();
     console.log(pet);
     window.location.href = "/search/" + pet;
+
     // $.ajax("/search/" + pet, {
     //   type: "GET"
     // }).then(function() {
@@ -21,6 +22,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     window.location.href = "/search/";
+
   });
 
   $("#users-account").on("click", function(event) {

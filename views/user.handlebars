@@ -1,46 +1,66 @@
-<div>Welcome <span id = "email"></span></div>
-
+<div class="container" id="userMain">
   <div class="row">
-    <form id = "petInsert" class="col s12">
+    <div class="col s6">
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="petName" type="text" class="validate">
-          <label for="petName">Pet Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="petType" type="text" class="validate">
-          <label for="petType">Pet Type</label>
-        </div>
+        <form id="petInsert" class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="petName" type="text" class="validate">
+              <label for="petName">Pet Name</label>
+            </div>
+            <div class="input-field col s6">
+              <select id="petType" type="text" class="validate">
+                <option value="" disabled selected>Select A Pet Type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="bird">Bird</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="zipCode" type="text" class="validate">
+              <label for="zipCode">Zip Code</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="price" type="text" class="validate">
+              <label for="price">Price</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="petPhoto" type="text" class="validate">
+              <label for="petPhoto">Pet Photo link</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="body" type="text" class="validate">
+              <label for="body">Additional Info</label>
+            </div>
+          </div>
+          <button id="addPet" class="btn waves-effect waves-light" type="submit" name="action">Add Pet
+            <i class="material-icons right"></i>
+          </button>
+        </form>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="zipCode" type="text" class="validate">
-          <label for="zipCode">Zip Code</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="price" type="text" class="validate">
-          <label for="price">Price</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="petPhoto" type="text" class="validate">
-          <label for="petPhoto">Pet Photo link</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="body" type="text" class="validate">
-          <label for="body">Additional Info</label>
-        </div>
-      </div>
-      <button id = "addPet" class="btn waves-effect waves-light" type="submit" name="action">Add Pet
-    <i class="material-icons right"></i>
-  </button>
-    </form>
-  </div>
+    </div>
+    <div class="col s6">
+      {{#each pets}}
 
-<script src = "/js/members.js"></script>
-<script src = "/js/pet.js"></script>
+      <h2> {{this.petName}} </h2>
+      <div><img src="{{this.pictureLink}}"></div>
+      <p>{{this.locaton}}</p>
+      <p>{{this.price}}</p>
+
+      <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Select this Pet</button>
+      {{/each}}
+
+    </div>
+
+    <script src="/js/members.js"></script>
+    <script src="/js/pet.js"></script>
+  </div>
+</div>

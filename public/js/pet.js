@@ -2,19 +2,27 @@ $(document).ready(function() {
   $("select").formSelect();
 
   $("#selectpetbtn").on("click", function(event) {
-    event.preventDefault();
+    event.stopImmediatePropagation();
     var pet = $("#animal")
       .find(":selected")
       .val();
     console.log(pet);
     window.location.href = "/search/" + pet;
-  //   $.ajax("/search/" + pet, {
-  //     type: "GET"
-  //   }).then(function() {
-  //     console.log("petviews");
-  //     // Reload the page to get the updated list
-  //     location.reload();
-  //   });
+
+    // $.ajax("/search/" + pet, {
+    //   type: "GET"
+    // }).then(function() {
+    //   console.log("petviews");
+    //   // Reload the page to get the updated list
+    //   location.reload();
+    // });
+  });
+
+  $("#searchPets").on("click", function(event) {
+    event.preventDefault();
+
+    window.location.href = "/search/";
+
   });
 
   $("#users-account").on("click", function(event) {

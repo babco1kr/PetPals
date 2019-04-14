@@ -1,4 +1,4 @@
-<div class="container">
+<div id = "placeHolder" class="container">
   <div class="row">
     <div class = "col s5">
     <div id="animal" class="input-field">
@@ -25,10 +25,11 @@
     
      <h2> {{this.petName}} </h2>
      <div><img class="petimage" src = "{{this.pictureLink}}"></div>
-     <p>{{this.locaton}}</p>
+     <p>{{this.location}}</p>
      <p>{{this.price}}</p>
 
-     <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Select this Pet</button>
+     <button type="submit" data-id="{{this.id}}" id="selectPet" class="btn btn-light">Select this Pet</button>
   {{/each}}
 
 </div>
+<script src = "/js/members.js"></script>

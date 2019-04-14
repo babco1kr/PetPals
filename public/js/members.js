@@ -3,7 +3,8 @@ $(document).ready(function() {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data) {
     $("#users-account").attr("data-id", data.id);
-    // $("#email").text(data.email);
-    $("#email").attr("data-id", data.id);
+    // sessionStorage.setItem("UserId", data.id);
+    $("#placeHolder").attr("data-id", data.id);
+    $("#placeHolder").attr("data-name", data.name);
   });
 });

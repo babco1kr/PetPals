@@ -1,5 +1,6 @@
 {{#each pets}}
-    <h2>{{this.requestsName}}</h2>
+    <h2>{{this.requestName}}</h2>
+    <button type = "submit" data.id = "{{this.requestsId}}" id = "#moreInfo" class = "btn btn-light">More Info</button>
      <h2> {{this.petName}} </h2>
      <div><img class="petimage" src = "{{this.pictureLink}}"></div>
      <p>{{this.location}}</p>

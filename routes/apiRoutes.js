@@ -35,6 +35,18 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  // Page checks to see if there are any pending requests and sends those back
+  app.get("/api/requests", function(req, res) {
+    db.Holding.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function(data) {
+      console.log("RESPONSE: " + data.length);
+      res.json(data);
+    });
+  });
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
@@ -125,6 +137,7 @@ module.exports = function(app) {
     });
   });
 
+  // Call for finding pets based on location and type
   app.get("/search/:type/:location", function(req, res) {
     db.Pet.findAll({
       where: {
@@ -140,6 +153,7 @@ module.exports = function(app) {
     });
   });
 
+  // Call to add Pet to the database
   app.post("/api/pets", function(req, res) {
     console.log("Pet Added");
     db.Pet.create({

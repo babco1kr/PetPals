@@ -28,6 +28,14 @@ module.exports = function(sequelize, DataTypes) {
     UserId: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    requestsId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    requestName: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return Holding;

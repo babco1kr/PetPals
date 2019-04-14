@@ -1,0 +1,10 @@
+{{#each pets}}
+    <h2>{{this.requestsName}}</h2>
+     <h2> {{this.petName}} </h2>
+     <div><img class="petimage" src = "{{this.pictureLink}}"></div>
+     <p>{{this.location}}</p>
+     <p>{{this.price}}</p>
+
+     <button type="submit" data-id="{{this.id}}" id="approve" class="btn btn-light">Approve</button>
+     <button type="submit" data-id="{{this.id}}" id="deny" class="btn btn-light">Deny</button>
+  {{/each}}

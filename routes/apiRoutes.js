@@ -15,6 +15,7 @@ module.exports = function(app) {
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -44,9 +45,54 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        name: req.user.name
       });
     }
+  });
+
+  app.get("/requests/:user", function(req, res) {
+    db.Holding.findAll({
+      where: {
+        UserId: req.params.user
+      }
+    }).then(function(data) {
+      var object = {
+        pets: data
+      };
+      res.render("requests", object);
+    });
+  });
+
+  app.get("/apis/pet_info/:id/:user/:name", function(req) {
+    db.Pet.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      var request = data[0].dataValues;
+      // console.log(data[0].dataValues);
+      db.Holding.create({
+        petName: request.petName,
+        petType: request.petType,
+        pictureLink: request.pictureLink,
+        location: request.location,
+        price: request.price,
+        body: request.body,
+        UserId: request.UserId,
+        requestsId: req.params.user,
+        requestName: req.params.name
+      }).then(function() {
+        console.log("Request Inserted");
+        db.Pet.destroy({
+          where: {
+            id: req.params.id
+          }
+        }).then(function() {
+          console.log("Pet removed");
+        });
+      });
+    });
   });
 
   //sequelize statements for user
@@ -79,6 +125,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/search/:type/:location", function(req, res) {
+    db.Pet.findAll({
+      where: {
+        petType: req.params.type,
+        location: req.params.location
+      }
+    }).then(function(data) {
+      console.log(data);
+      var object = {
+        pets: data
+      };
+      res.render("search", object);
+    });
+  });
+
   app.post("/api/pets", function(req, res) {
     console.log("Pet Added");
     db.Pet.create({
@@ -88,7 +149,7 @@ module.exports = function(app) {
       location: req.body.location,
       price: req.body.price,
       body: req.body.body,
-      UserId: req.body.UserId
+      UserId: req.user.id
     }).then(function(data) {
       res.json(data);
     });

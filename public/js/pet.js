@@ -6,23 +6,11 @@ $(document).ready(function() {
     var pet = $("#animal")
       .find(":selected")
       .val();
+    var location = $("#zipCodeSearch")
+      .val()
+      .trim();
     console.log(pet);
-    window.location.href = "/search/" + pet;
-
-    // $.ajax("/search/" + pet, {
-    //   type: "GET"
-    // }).then(function() {
-    //   console.log("petviews");
-    //   // Reload the page to get the updated list
-    //   location.reload();
-    // });
-  });
-
-  $("#searchPets").on("click", function(event) {
-    event.preventDefault();
-
-    window.location.href = "/search/";
-
+    window.location.href = "/search/" + pet + "/" + location;
   });
 
   $("#users-account").on("click", function(event) {
@@ -40,8 +28,8 @@ $(document).ready(function() {
         .val()
         .trim(),
       petType: $("#petType")
-        .val()
-        .trim(),
+        .find(":selected")
+        .val(),
       pictureLink: $("#petPhoto")
         .val()
         .trim(),
@@ -53,15 +41,23 @@ $(document).ready(function() {
         .trim(),
       body: $("#body")
         .val()
-        .trim(),
-      UserId: $("#email").attr("data-id")
+        .trim()
     };
-    console.log(newPet);
     $.ajax("/api/pets", {
       type: "POST",
       data: newPet
     }).then(function() {
       console.log("Pet added");
+      location.reload();
+    });
+  });
+
+  $("#selectPet").on("click", function(event) {
+    event.stopImmediatePropagation();
+    var id = $(this).data("id");
+    var user = $("#placeHolder").data("id");
+    var name = $("#placeHolder").data("name");
+    $.get("/apis/pet_info/" + id + "/" + user + "/" + name).then(function() {
       location.reload();
     });
   });

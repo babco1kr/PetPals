@@ -259,4 +259,15 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
+  // Call to remove requests from completed table
+  app.delete("/api/complete/:id", function(req, res) {
+    db.Complete.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
 };

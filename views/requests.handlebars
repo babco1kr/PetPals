@@ -1,3 +1,5 @@
+<div class = "row">
+<div class = "col s6">
 {{#each pets}}
     <h2>{{this.requestName}}</h2>
     <button type = "submit" data-id = "{{this.requestsId}}" id = "#moreInfo" class = "btn btn-light">More Info</button>
@@ -9,5 +11,36 @@
      <button type="submit" data-id="{{this.id}}" class="approve" class="btn btn-light">Approve</button>
      <button type="submit" data-id="{{this.id}}" class="deny" class="btn btn-light">Deny</button>
   {{/each}}
+</div>
 
-  
+<div class = "col s3">
+    {{#each userPets}}
+        <div class = "row">
+            <div class = "col s4">
+                {{petName}}
+            </div>
+            <div class = "col s4">
+                {{SitterNumber}}
+            </div>
+            <div class = "col s4">
+                <button type = "submit" data-id "{{id}}" class = "endSit" class="btn btn-light">X</button>
+            </div>
+        </div>
+    {{/each}}
+</div>
+<div class = "col s3">
+    {{#each userSits}}
+        <div class = "row">
+            <div class = "col s4">
+                {{petName}}
+            </div>
+            <div class = "col s4">
+                {{OwnerPhone}}
+            </div>
+            <div class = "col s4">
+                <button type = "submit" data-id "{{id}}" class = "endSit" class="btn btn-light">X</button>
+            </div>
+        </div>
+    {{/each}}
+</div>
+</div>

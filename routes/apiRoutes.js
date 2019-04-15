@@ -83,6 +83,7 @@ module.exports = function(app) {
       }
     }).then(function(data) {
       var request = data[0].dataValues;
+      //finds pet by ID and gets stored into a new table and deleted from the old table when choosing when to watch the pet.
       // console.log(data[0].dataValues);
       db.Holding.create({
         petName: request.petName,

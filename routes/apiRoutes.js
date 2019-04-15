@@ -107,7 +107,7 @@ module.exports = function(app) {
       });
     });
   });
-
+  //takes info from holding table and moves it back into pets table if request is denied.
   app.get("/api/deny/:id", function(req, res) {
     console.log(req.params.id);
     db.Holding.findAll({

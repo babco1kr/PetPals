@@ -138,25 +138,42 @@ module.exports = function(app) {
   });
 
   //Call for approving Sitting request
-  app.get("/api/approve/:id/:user", function(req, res) {
+  app.get("/api/approve/:id", function(req, res) {
     db.Holding.findAll({
       where: {
         id: req.params.id
       }
-    }).then(function(data) {
-      console.log(data);
-      var request = data[0].dataValues;
+    }).then(function(pet) {
+      var petInfo = pet[0].dataValues;
+      // console.log(petInfo);
       db.User.findAll({
         where: {
-          id: req.params.user
+          id: petInfo.UserId
         }
-      }).then(function(data2) {
-        var userInfo = data2[0].dataValues;
-        db.Complete.create({
-          petName: request.petName,
-          phone: userInfo.phone
-        }).then(function() {
-          console.log("Working");
+      }).then(function(owner) {
+        var Owner = owner[0].dataValues;
+        // console.log(Owner);
+        db.User.findAll({
+          where: {
+            id: petInfo.requestsId
+          }
+        }).then(function(sitter) {
+          var sitterInfo = sitter[0].dataValues;
+          db.Complete.create({
+            petName: petInfo.petName,
+            OwnerPhone: Owner.phone,
+            OwnerId: Owner.id,
+            SitterNumber: sitterInfo.phone,
+            SitterId: sitterInfo.id
+          }).then(function() {
+            db.Holding.destroy({
+              where: {
+                id: req.params.id
+              }
+            }).then(function(data) {
+              res.json(data);
+            });
+          });
         });
       });
     });

@@ -88,15 +88,15 @@ $(document).ready(function() {
     var id = $(this).data("id");
     $.get("/api/deny/" + id).then(function(){
       location.reload();
-    })
+    });
   });
   // Call for Approving a Sitting request
   $(".approve").on("click", function(event) {
     event.stopImmediatePropagation();
     var id = $(this).data("id");
-    var user = $("#placeHolder").data("id");
-    $.get("/api/approve/" + id + "/" + user).then(function() {
+    $.get("/api/approve/" + id).then(function() {
       console.log("Working");
+      location.reload();
     });
   });
 });

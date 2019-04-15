@@ -79,4 +79,14 @@ $(document).ready(function() {
       location.reload();
     });
   });
+
+  // Call for denying a sitting request
+  $("#deny").on("click", function(event) {
+    event.stopImmediatePropagation();
+
+    var id = $(this).data("id");
+    $.get("/api/deny/" + id).then(function() {
+      console.log("Working");
+    });
+  });
 });

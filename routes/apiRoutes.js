@@ -107,6 +107,34 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/deny/:id", function(req, res) {
+    console.log(req.params.id);
+    db.Holding.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      var request = data[0].dataValues;
+      db.Pet.create({
+        petName: request.petName,
+        petType: request.petType,
+        pictureLink: request.pictureLink,
+        location: request.location,
+        price: request.price,
+        body: request.body,
+        UserId: request.UserId
+      }).then(function() {
+        db.Holding.destroy({
+          where: {
+            id: req.params.id
+          }
+        }).then(function() {
+          return;
+        });
+      });
+    });
+  });
+
   //sequelize statements for user
   // "/user/:id"
   app.get("/user/:id", function(req, res) {

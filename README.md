@@ -28,11 +28,15 @@ Being a pet owner is not a requirement to sign up for this application. A non-pe
 The project was created and maintained by Vanessa Guercio, Madeline Prusak, Kyle Babcock and Alfredo Torres.
 
 
-How does Pet Pals work?
-
+How does Midas work?
 Technologies used: Front end development:
-back end development: 
+back end development:
 
-What is Midas’ goal?
 
-How can your organization benefit from using Midas?
+What is Pet Pals’ goal?
+The goal of Pet Pals is to create potential income for pet-sitters and most importantly, for all pets to be cared for, watched, walked and played with when their pet-parent  able to. The community of Pet Pals is accepting of the fact that people have their own lives and outside cirrumstances that change from day to day. We know that shouldnt hinder them from being a great pet parents and having a happy healthy pet at home. 
+
+
+
+[Deployed Link]()
+[GitHub Link]()

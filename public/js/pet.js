@@ -99,4 +99,13 @@ $(document).ready(function() {
       location.reload();
     });
   });
+
+  // Removes requests info for approved sits on the requests page
+  $(".endSit").on("click", function(event) {
+    event.stopImmediatePropagation();
+    var id = $(this).data("id");
+    $.ajax("/api/complete/" + id).then(function() {
+      location.reload();
+    });
+  });
 });

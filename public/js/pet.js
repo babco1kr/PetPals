@@ -70,9 +70,10 @@ $(document).ready(function() {
   });
 
   // Call for selecting pet to sit
-  $("#selectPet").on("click", function(event) {
+  $(".selectPet").on("click", function(event) {
     event.stopImmediatePropagation();
     var id = $(this).data("id");
+    console.log(id);
     var user = $("#placeHolder").data("id");
     var name = $("#placeHolder").data("name");
     $.get("/apis/pet_info/" + id + "/" + user + "/" + name).then(function() {
@@ -81,7 +82,7 @@ $(document).ready(function() {
   });
 
   // Call for denying a sitting request
-  $("#deny").on("click", function(event) {
+  $(".deny").on("click", function(event) {
     event.stopImmediatePropagation();
 
     var id = $(this).data("id");

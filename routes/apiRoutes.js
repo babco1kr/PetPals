@@ -16,6 +16,7 @@ module.exports = function(app) {
     console.log(req.body);
     db.User.create({
       name: req.body.name,
+      phone: req.body.phone,
       email: req.body.email,
       password: req.body.password
     })
@@ -76,7 +77,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/apis/pet_info/:id/:user/:name", function(req) {
+  app.get("/apis/pet_info/:id/:user/:name", function(req, res) {
     db.Pet.findAll({
       where: {
         id: req.params.id
@@ -101,7 +102,8 @@ module.exports = function(app) {
           where: {
             id: req.params.id
           }
-        }).then(function() {
+        }).then(function(data2) {
+          res.json(data2);
           console.log("Pet removed");
         });
       });
@@ -109,7 +111,6 @@ module.exports = function(app) {
   });
   //takes info from holding table and moves it back into pets table if request is denied.
   app.get("/api/deny/:id", function(req, res) {
-    console.log(req.params.id);
     db.Holding.findAll({
       where: {
         id: req.params.id
@@ -129,8 +130,33 @@ module.exports = function(app) {
           where: {
             id: req.params.id
           }
+        }).then(function(data2) {
+          res.json(data2);
+        });
+      });
+    });
+  });
+
+  //Call for approving Sitting request
+  app.get("/api/approve/:id/:user", function(req, res) {
+    db.Holding.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      console.log(data);
+      var request = data[0].dataValues;
+      db.User.findAll({
+        where: {
+          id: req.params.user
+        }
+      }).then(function(data2) {
+        var userInfo = data2[0].dataValues;
+        db.Complete.create({
+          petName: request.petName,
+          phone: userInfo.phone
         }).then(function() {
-          return;
+          console.log("Working");
         });
       });
     });

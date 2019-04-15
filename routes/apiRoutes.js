@@ -69,11 +69,27 @@ module.exports = function(app) {
       where: {
         UserId: req.params.user
       }
-    }).then(function(data) {
-      var object = {
-        pets: data
-      };
-      res.render("requests", object);
+    }).then(function(petRequests) {
+      db.Complete.findAll({
+        where: {
+          OwnerId: req.params.user
+        }
+      }).then(function(userPets) {
+        db.Complete.findAll({
+          where: {
+            SitterId: req.params.user
+          }
+        }).then(function(userSits) {
+          console.log("USER: " + userPets);
+          console.log("OWNER: " + userSits);
+          var object = {
+            pets: petRequests,
+            userPets: userPets,
+            userSits: userSits
+          };
+          res.render("requests", object);
+        });
+      });
     });
   });
 
@@ -184,10 +200,13 @@ module.exports = function(app) {
   app.get("/user/:id", function(req, res) {
     //This makes sure the current user can only access their user page
     if (req.user.id.toString() === req.params.id.toString()) {
-      db.User.findAll({
-        where: { id: req.params.id }
+      db.Pet.findAll({
+        where: { UserId: req.params.id }
       }).then(function(data) {
-        res.render("user", data);
+        var object = {
+          pets: data
+        };
+        res.render("user", object);
       });
     } else {
       res.redirect("/index");

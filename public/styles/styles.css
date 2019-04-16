@@ -79,7 +79,11 @@ footer{
 }
 
 #searchpage {
-  background-image: url("../images/puppyinteacup.jpg");
+  background-image: url("../images/teacuppuppy.jpg");
+  height: 100vh;
 
 }
 
+.input-field {
+color: black;
+}

@@ -87,6 +87,10 @@ footer{
 
 }
 
-.input-field {
-color: black;
+::placeholder {
+  color: black; 
+}
+
+label {
+  color: black !important;
 }

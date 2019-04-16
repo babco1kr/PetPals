@@ -52,14 +52,6 @@ h1 {
   border-radius: 10px;
   margin-top: 57px;
 }
-
-footer{
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  position: sticky;
-}
-
 #userpage{
   background-image: url("../images/kittensleeping.jpg");
   height: 100vh;
@@ -113,6 +105,7 @@ background: rgba(252, 252, 252, 0.30);
   padding-top: 57px;
 }
 
+
 .select-wrapper input.select-dropdown:focus{
   color: black;
  
@@ -121,3 +114,11 @@ background: rgba(252, 252, 252, 0.30);
 .select-wrapper input.select-dropdown {
   color: black;
 }
+
+#requestpage{
+  background-image: url("../images/Pugface.jpg");
+  background-repeat: repeat-y;
+  height:100vh;
+}
+
+

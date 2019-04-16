@@ -106,7 +106,9 @@ module.exports = function(app) {
         body: request.body,
         UserId: request.UserId,
         requestsId: req.params.user,
-        requestName: req.params.name
+        requestName: req.params.name,
+        startDate: request.startDate,
+        endDate: request.endDate
       }).then(function() {
         db.Pet.destroy({
           where: {
@@ -133,6 +135,8 @@ module.exports = function(app) {
         location: request.location,
         price: request.price,
         body: request.body,
+        startDate: request.startDate,
+        endDate: request.endDate,
         UserId: request.UserId
       }).then(function() {
         db.Holding.destroy({
@@ -252,6 +256,8 @@ module.exports = function(app) {
       location: req.body.location,
       price: req.body.price,
       body: req.body.body,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
       UserId: req.user.id
     }).then(function(data) {
       res.json(data);

@@ -36,6 +36,14 @@ module.exports = function(sequelize, DataTypes) {
     requestName: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   });
   return Holding;

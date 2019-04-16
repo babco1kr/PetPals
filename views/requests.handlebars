@@ -12,8 +12,8 @@
           <div><img class="petimage" src="{{this.pictureLink}}"></div>
           <p>Price: ${{this.price}}/day</p>
           <p>Dates: {{this.startDate}} - {{this.endDate}}</p>
-          <button type="submit" data-id="{{this.id}}" class="approve" class="btn btn-light">Approve</button>
-          <button type="submit" data-id="{{this.id}}" class="deny" class="btn btn-light">Deny</button>
+          <button type="submit" data-id="{{this.id}}" class="approve btn blue lighten-2" name = "action">Approve</button>
+          <button type="submit" data-id="{{this.id}}" class="deny btn blue lighten-2">Deny</button>
       </div>
     </div>
   {{/each}}
@@ -43,7 +43,7 @@
                 {{SitterNumber}}
             </div>
             <div class = "col s4">
-                <button type = "submit" data-id = "{{id}}" class = "endSit" class="btn btn-light">X</button>
+                <button type = "submit" data-id = "{{id}}" class = "endSit btn blue lighten-2">X</button>
             </div>
         </div>
     {{/each}}
@@ -59,7 +59,7 @@
                 {{OwnerPhone}}
             </div>
             <div class = "col s4">
-                <button type = "submit" data-id = "{{id}}" class = "endSit" class="btn btn-light">X</button>
+                <button type = "submit" data-id = "{{id}}" class = "endSit btn btn-light">X</button>
             </div>
         </div>
     {{/each}}

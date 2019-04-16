@@ -7,6 +7,14 @@ $(document).ready(function() {
   var currentPage = parseInt(values[4]) + 1;
   console.log(currentPage);
   var limit = currentPage + 5;
+
+  // var address = "/" + values[3];
+  // for (i = 4; i < values.length - 1; i++) {
+  //   address += "/" + values[i];
+  // }
+
+  // console.log(address);
+
   for (i = currentPage; i < limit; i++) {
     var li = $("<li>");
     var a = $("<a>");
@@ -18,15 +26,5 @@ $(document).ready(function() {
     li.addClass("waves-effect page btn");
     a.append(li);
     $("#pages").append(a);
-}
-
-  //   $(".page").on("click", function(event) {
-  //     event.preventDefault();
-  //     var page = $(this).data("id");
-  //     console.log(page);
-  //     console.log(values[3] + "/" + page + "/" + values[5] + "/" + values[6]);
-  //     var address = ("/" + values[3] + "/" + page + "/" + values[5] + "/" + values[6]).toString();
-  //     console.log(address);
-  //     window.location.href = address;
-  //   });
+  }
 });

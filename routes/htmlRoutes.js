@@ -27,8 +27,8 @@ module.exports = function(app) {
   });
 
   //sequelize search route
-  app.get("/search", isAuthenticated, function(req, res) {
-    db.Pet.findAll({}).then(function(data) {
+  app.get("/search/:page", isAuthenticated, function(req, res) {
+    db.Pet.findAll({limit: 10}).then(function(data) {
       var object = {
         pets: data
       };

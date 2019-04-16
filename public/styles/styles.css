@@ -94,3 +94,12 @@ footer{
 label {
   color: black !important;
 }
+
+#placeHolder {
+background: rgba(252, 252, 252, 0.30);
+}
+
+.searchresults {
+  margin-left: 1%;
+  padding-bottom: 1%;
+}

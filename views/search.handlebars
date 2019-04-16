@@ -23,20 +23,24 @@
     <a id= "selectpetbtn"class="blue lighten-2 btn-large">Select</a>
 </div>
   </div>
-<div>
+<div class="searchresults">
   {{#each pets}}
-    
+    <div class="row">
+      <div class="col 4">
      <h2> {{this.petName}} </h2>
-     <div><img class="petimage" src = "{{this.pictureLink}}"></div>
+     <div><img class="petimage" src = "{{this.pictureLink}}"></div></div>
+     <div class="col 8">
      <p>{{this.price}}</p>
      <p>{{this.body}}</p>
      <p>Start Date: {{this.startDate}} End Date: {{this.endDate}}</p>
-
-     <button type="submit" data-id="{{this.id}}" class="selectPet" class="btn btn- blue lighten-2">Select this Pet</button>
+</div></div>
+     <button type="submit" data-id="{{this.id}}" class="selectPet" class="btn blue lighten-2">Select this Pet</button>
   {{/each}}
 
 </div>
 </div>
+<div class="row">
+  <div class="col 12">
   <ul class="pagination" id = "pages">
     {{!-- <li class="active"><a href="#!">1</a></li>
     <li class="waves-effect"><a href="#!">2</a></li>
@@ -44,7 +48,7 @@
     <li class="waves-effect"><a href="#!">4</a></li>
     <li class="waves-effect"><a href="#!">5</a></li> --}}
   </ul>
-</div>
+</div></div></div>
 <script src = "/js/search.js"></script>
 <script src = "/js/members.js"></script>
 <script src = "/js/requests.js"></script>

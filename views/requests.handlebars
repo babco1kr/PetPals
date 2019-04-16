@@ -1,8 +1,24 @@
+<div class = "container">
 <div class = "row">
 <div class = "col s6">
 {{#each pets}}
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <h4>Sitters Name: {{this.requestName}}</h4>
+          <span class="card-title">{{this.petName}}</span>
+          <div><img class="petimage" src="{{this.pictureLink}}"></div>
+          <p>Price: ${{this.price}}/day</p>
+          <p>Dates: {{this.startDate}} - {{this.endDate}}</p>
+          <button type="submit" data-id="{{this.id}}" class="approve" class="btn btn-light">Approve</button>
+          <button type="submit" data-id="{{this.id}}" class="deny" class="btn btn-light">Deny</button>
+      </div>
+    </div>
+  {{/each}}
+
+
+{{!-- {{#each pets}}
     <h2>{{this.requestName}}</h2>
-    {{!-- <button type = "submit" data-id = "{{this.requestsId}}" id = "#moreInfo" class = "btn btn-light">More Info</button> --}}
+    <button type = "submit" data-id = "{{this.requestsId}}" id = "#moreInfo" class = "btn btn-light">More Info</button>
      <h2> {{this.petName}} </h2>
      <div><img class="petimage" src = "{{this.pictureLink}}"></div>
      <p>{{this.location}}</p>
@@ -10,10 +26,11 @@
 
      <button type="submit" data-id="{{this.id}}" class="approve" class="btn btn-light">Approve</button>
      <button type="submit" data-id="{{this.id}}" class="deny" class="btn btn-light">Deny</button>
-  {{/each}}
+  {{/each}} --}}
 </div>
 
 <div class = "col s3">
+    <h5>Your pet Sitters</h5>
     {{#each userPets}}
         <div class = "row">
             <div class = "col s4">
@@ -29,6 +46,7 @@
     {{/each}}
 </div>
 <div class = "col s3">
+    <h5>Pets You are Sitting</h5>
     {{#each userSits}}
         <div class = "row">
             <div class = "col s4">
@@ -42,6 +60,7 @@
             </div>
         </div>
     {{/each}}
+</div>
 </div>
 </div>
 <script src = "/js/requests.js"></script>

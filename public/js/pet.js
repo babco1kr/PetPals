@@ -51,6 +51,12 @@ $(document).ready(function() {
         .trim(),
       body: $("#body")
         .val()
+        .trim(),
+      startDate: $("#beginDate")
+        .val()
+        .trim(),
+      endDate: $("#endDate")
+        .val()
         .trim()
     };
     $.ajax("/api/pets", {

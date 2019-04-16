@@ -56,7 +56,7 @@ footer{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  position: sticky;
+  position: relative;
 }
 #userpage{
   background-image: url("../images/kittensleeping.jpg");
@@ -183,6 +183,7 @@ html {
   background-image: url("../images/Pugface.jpg");
   background-repeat: repeat-y;
   height:100vh;
+  overflow: auto;
 }
 
 .input-field input[type=text]:focus {

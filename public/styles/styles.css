@@ -4,6 +4,7 @@
 
 /* search.handlebars */
 .petimage {
+  margin-left: 1%;
   max-width: 20%;
   max-height: 30%;
 }
@@ -11,10 +12,7 @@ h1 {
   font-family: 'Lobster', cursive;
 
 }
-#footer {
-  position: fixed;
- 
-}
+
 
 #signuppage {
   background-image: url("../images/adorable-animal-canine-1564506.jpg");
@@ -60,6 +58,7 @@ footer{
   position: sticky;
 }
 
+
 #userpage{
   background-image: url("../images/kittensleeping.jpg");
   height: 100vh;
@@ -81,11 +80,12 @@ footer{
   background-repeat: no-repeat;
 }
 
-#searchpage {
+/* #searchpage {
   background-image: url("../images/teacuppuppy.jpg");
   height: 100vh;
+  background-repeat: repeat-y;
 
-}
+} */
 
 ::placeholder {
   color: black; 
@@ -111,4 +111,39 @@ background: rgba(252, 252, 252, 0.30);
 
 #searchpage {
   padding-top: 57px;
+}
+
+h2 {
+  margin-left: 1%;
+
+}
+
+.price {
+  margin-left: 1%;
+}
+
+.selectPet {
+  margin-left: 1%;
+}
+
+.card {
+  max-width: 50%;
+}
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Merriweather', serif;
+}
+
+/* background image container*/
+.bg {
+	background-image: url(./images/teacuppuppy.jpg);
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	overflow: auto;
+	background-attachment: fixed;
 }

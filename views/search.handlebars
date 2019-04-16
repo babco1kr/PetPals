@@ -23,21 +23,31 @@
     <a id= "selectpetbtn"class="blue lighten-2 btn-large">Select</a>
 </div>
   </div>
+
+
 <div class="searchresults">
-  {{#each pets}}
+ 
     <div class="row">
-      <div class="col 4">
-     <h2> {{this.petName}} </h2>
-     <div><img class="petimage" src = "{{this.pictureLink}}"></div></div>
-     <div class="col 8">
-     <p>{{this.price}}</p>
-     <p>{{this.body}}</p>
-     <p>Start Date: {{this.startDate}} End Date: {{this.endDate}}</p>
-</div></div>
+      <div class="col-sm-2">
+        {{#each pets}}
+        <div class="card blue-grey lighten-5"> 
+          <span class="card-title"> <h2> {{this.petName}} </h2></span>
+      <div>
+      <img class="petimage" src = "{{this.pictureLink}}"></div>
+     <p class="price">Price Per Day: {{this.price}}</p>
+     <p class="price">{{this.body}}</p>
+     <p class="price">Start Date: {{this.startDate}}<br> End Date: {{this.endDate}}</p>
+
+
      <button type="submit" data-id="{{this.id}}" class="selectPet" class="btn blue lighten-2">Select this Pet</button>
-  {{/each}}
+ </div>
+{{/each}}
 
 </div>
+
+</div> 
+</div>  
+<br>
 <div class="row">
   <ul class="pagination center-align" id = "pages">
     <p>Pages</p>

@@ -1,20 +1,13 @@
 $(document).ready(function() {
+  // Grabs the data of the address bar
   var window = $(location).attr("href");
-  console.log(window);
+  // Splits the window variable at every / for use later
   var values = window.split("/");
-  console.log(values);
 
   var currentPage = parseInt(values[4]) + 1;
-  console.log(currentPage);
   var limit = currentPage + 5;
 
-  // var address = "/" + values[3];
-  // for (i = 4; i < values.length - 1; i++) {
-  //   address += "/" + values[i];
-  // }
-
-  // console.log(address);
-
+  // Forms the page buttons at the bottom of the search page
   for (i = currentPage; i < limit; i++) {
     var li = $("<li>");
     var a = $("<a>");

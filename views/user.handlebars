@@ -2,6 +2,7 @@
 <div id="userpage">
 <div class="container" id="userMain">
   <div class="row">
+    {{!-- Form for inserting new pet --}}
     <div class="col s6">
       <div class="row">
         <form id="petInsert" class="col s12">
@@ -57,13 +58,15 @@
         </form>
       </div>
     </div>
+
+{{!-- Displays all users listed pets --}}
 <div id="userpets">
 {{#each pets}}
     <div class="col s6">
-      <div class="card  blue-grey lighten-5">
-        <div class="card-content black-text">
+      <div class="card blue-grey lighten-5">
+        <div class="card-content black-text center-align">
           <span class="card-title">{{this.petName}}</span>
-          <div><img class="petimage" src="{{this.pictureLink}}"></div>
+          <div><img class="userPetImage" src="{{this.pictureLink}}"></div>
           <p>Price: ${{this.price}}/day</p>
           <p>Dates: {{this.startDate}} - {{this.endDate}}</p>
       </div>

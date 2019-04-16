@@ -2,12 +2,6 @@ $(document).ready(function() {
   //Needed for select drop down to work
   $("select").formSelect();
 
-  //Call to check if currenct user has any pending requests and updates the page
-  $.get("/api/requests").then(function(data) {
-    var requestNumber = data.length;
-    $("#requests").text("(" + requestNumber + ") Requests");
-  });
-
   // Allows filter for pet type and location
   $("#selectpetbtn").on("click", function(event) {
     event.stopImmediatePropagation();
@@ -17,7 +11,6 @@ $(document).ready(function() {
     var location = $("#zipCodeSearch")
       .val()
       .trim();
-    console.log(pet);
     window.location.href = "/search/" + pet + "/" + location;
   });
 
@@ -64,7 +57,6 @@ $(document).ready(function() {
       type: "POST",
       data: newPet
     }).then(function() {
-      console.log("Pet added");
       location.reload();
     });
   });
@@ -73,7 +65,6 @@ $(document).ready(function() {
   $(".selectPet").on("click", function(event) {
     event.stopImmediatePropagation();
     var id = $(this).data("id");
-    console.log(id);
     var user = $("#placeHolder").data("id");
     var name = $("#placeHolder").data("name");
     $.get("/apis/pet_info/" + id + "/" + user + "/" + name).then(function() {
@@ -86,7 +77,7 @@ $(document).ready(function() {
     event.stopImmediatePropagation();
 
     var id = $(this).data("id");
-    $.get("/api/deny/" + id).then(function(){
+    $.get("/api/deny/" + id).then(function() {
       location.reload();
     });
   });
@@ -95,7 +86,18 @@ $(document).ready(function() {
     event.stopImmediatePropagation();
     var id = $(this).data("id");
     $.get("/api/approve/" + id).then(function() {
-      console.log("Working");
+      location.reload();
+    });
+  });
+
+  // Removes requests info for approved sits on the requests page
+  $(".endSit").on("click", function(event) {
+    event.stopImmediatePropagation();
+    var id = $(this).data("id");
+    console.log("THIS ID: " + id);
+    $.ajax("/api/complete/" + id, {
+      type: "DELETE"
+    }).then(function() {
       location.reload();
     });
   });

@@ -48,18 +48,15 @@
     </div>
     <div class="col s6">
       {{#each pets}}
-
       <h2> {{this.petName}} </h2>
-      <div><img src="{{this.pictureLink}}"></div>
-      <p>{{this.locaton}}</p>
+      <div><img class="petimage" src="{{this.pictureLink}}"></div>
+      <p>{{this.location}}</p>
       <p>{{this.price}}</p>
-
-      <button type="submit" data-id="{{this.id}}" id="select" class="btn btn-light">Select this Pet</button>
       {{/each}}
 
     </div>
-
-    <script src="/js/members.js"></script>
-    <script src="/js/pet.js"></script>
   </div>
 </div>
+<script src="/js/members.js"></script>
+<script src="/js/pet.js"></script>
+<script src = "/js/requests.js"></script>

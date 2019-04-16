@@ -134,16 +134,16 @@ h2 {
   max-width: 50%;
 }
 
-body,
+/* body,
 html {
 	height: 100%;
 	margin: 0;
 	font-family: 'Merriweather', serif;
-}
+} */
 
 /* background image container*/
 .bg {
-	background-image: url(./images/teacuppuppy.jpg);
+	background-image: url("../images/teacuppuppy.jpg");
 	height: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -167,6 +167,5 @@ html {
   background-repeat: repeat-y;
   height:100vh;
 }
-
 
 

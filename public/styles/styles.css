@@ -56,6 +56,22 @@ footer{
   font-size: 18px;
   position: sticky;
 }
+
+#userpage{
+  background-image: url("../images/kittensleeping.jpg");
+  height: 100vh;
+  background-size: cover; 
+  padding-top: 2px;
+}
+
+#petInsert {
+  background-color: rgba(252, 252, 252, 0.30);
+  text-align: left;
+  color: black;
+  border-radius: 10px;
+  margin-top: 57px;
+}
+
 #index-img{
   background-image: url("../images/adorable-animal-cat-730896\(new\).jpg");
   padding-bottom: 35%;
@@ -66,3 +82,4 @@ footer{
   background-image: url("../images/puppyinteacup.jpg");
 
 }
+

@@ -13,7 +13,6 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
-    console.log(req.body);
     db.User.create({
       name: req.body.name,
       phone: req.body.phone,
@@ -43,7 +42,6 @@ module.exports = function(app) {
         UserId: req.user.id
       }
     }).then(function(data) {
-      console.log("RESPONSE: " + data.length);
       res.json(data);
     });
   });
@@ -80,8 +78,6 @@ module.exports = function(app) {
             SitterId: req.params.user
           }
         }).then(function(userSits) {
-          console.log("USER: " + userPets);
-          console.log("OWNER: " + userSits);
           var object = {
             pets: petRequests,
             userPets: userPets,
@@ -101,7 +97,6 @@ module.exports = function(app) {
     }).then(function(data) {
       var request = data[0].dataValues;
       //finds pet by ID and gets stored into a new table and deleted from the old table when choosing when to watch the pet.
-      // console.log(data[0].dataValues);
       db.Holding.create({
         petName: request.petName,
         petType: request.petType,
@@ -113,14 +108,12 @@ module.exports = function(app) {
         requestsId: req.params.user,
         requestName: req.params.name
       }).then(function() {
-        console.log("Request Inserted");
         db.Pet.destroy({
           where: {
             id: req.params.id
           }
         }).then(function(data2) {
           res.json(data2);
-          console.log("Pet removed");
         });
       });
     });
@@ -161,14 +154,12 @@ module.exports = function(app) {
       }
     }).then(function(pet) {
       var petInfo = pet[0].dataValues;
-      // console.log(petInfo);
       db.User.findAll({
         where: {
           id: petInfo.UserId
         }
       }).then(function(owner) {
         var Owner = owner[0].dataValues;
-        // console.log(Owner);
         db.User.findAll({
           where: {
             id: petInfo.requestsId
@@ -220,7 +211,6 @@ module.exports = function(app) {
         petType: req.params.type
       }
     }).then(function(data) {
-      console.log(data);
       var object = {
         pets: data
       };
@@ -236,7 +226,6 @@ module.exports = function(app) {
         location: req.params.location
       }
     }).then(function(data) {
-      console.log(data);
       var object = {
         pets: data
       };
@@ -246,7 +235,6 @@ module.exports = function(app) {
 
   // Call to add Pet to the database
   app.post("/api/pets", function(req, res) {
-    console.log("Pet Added");
     db.Pet.create({
       petName: req.body.petName,
       petType: req.body.petType,

@@ -56,14 +56,27 @@
         </form>
       </div>
     </div>
-    <div class="col s6">
+    {{!-- <div class="col s6">
       {{#each pets}}
       <h2> {{this.petName}} </h2>
       <div><img class="petimage" src="{{this.pictureLink}}"></div>
       <p>{{this.location}}</p>
       <p>{{this.price}}</p>
-      {{/each}}
-
+      {{/each}} --}}
+<div id="userpets">
+{{#each pets}}
+    <div class="col s6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{this.petName}}</span>
+          <div><img class="petimage" src="{{this.pictureLink}}"></div>
+          <p>{{this.price}}</p>
+          <p>Dates: {{this.startDate}} to {{this.endDate}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
     </div>
   </div>
 </div>

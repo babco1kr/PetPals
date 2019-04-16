@@ -232,20 +232,17 @@ module.exports = function(app) {
       where: {
         petType: req.params.type,
         location: req.params.location
-      }
-    }).then(function(total) {
-      db.Pet.findAll({
-        offset: page * 10,
-        limit: 10
-      }).then(function(data) {
-        var object = {
-          total: total,
-          pets: data
-        };
-        res.render("search", object);
-      });
+      },
+      offset: page * 10,
+      limit: 10
+    }).then(function(data) {
+      var object = {
+        pets: data
+      };
+      res.render("search", object);
     });
   });
+
 
   // Call to add Pet to the database
   app.post("/api/pets", function(req, res) {

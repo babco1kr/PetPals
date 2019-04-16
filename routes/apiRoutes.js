@@ -205,7 +205,7 @@ module.exports = function(app) {
   });
 
   //sequelize search type for a search filter
-  app.get("/search/:type", function(req, res) {
+  app.get("/search/:page?/:type", function(req, res) {
     db.Pet.findAll({
       where: {
         petType: req.params.type
@@ -219,17 +219,24 @@ module.exports = function(app) {
   });
 
   // Call for finding pets based on location and type
-  app.get("/search/:type/:location", function(req, res) {
+  app.get("/search/:page?/:type/:location", function(req, res) {
+    var page = req.params.page - 1;
     db.Pet.findAll({
       where: {
         petType: req.params.type,
         location: req.params.location
       }
-    }).then(function(data) {
-      var object = {
-        pets: data
-      };
-      res.render("search", object);
+    }).then(function(total) {
+      db.Pet.findAll({
+        offset: page * 10,
+        limit: 10
+      }).then(function(data) {
+        var object = {
+          total: total,
+          pets: data
+        };
+        res.render("search", object);
+      });
     });
   });
 

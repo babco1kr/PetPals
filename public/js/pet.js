@@ -11,7 +11,7 @@ $(document).ready(function() {
     var location = $("#zipCodeSearch")
       .val()
       .trim();
-    window.location.href = "/search/" + pet + "/" + location;
+    window.location.href = "/search/1/" + pet + "/" + location;
   });
 
   // Calls the route for the current users page

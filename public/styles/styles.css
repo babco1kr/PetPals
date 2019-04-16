@@ -20,18 +20,16 @@
   background-size: cover; 
   padding-top: 2px;
 }
-
-
-
-
 footer{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
+  position: sticky;
 }
 #index-img{
   background-image: url("../images/adorable-animal-cat-730896\(new\).jpg");
-  padding-bottom:100px;
+  padding-bottom: 35%;
+  background-repeat: no-repeat;
 }
 
 #searchpage {

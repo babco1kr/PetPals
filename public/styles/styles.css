@@ -58,16 +58,21 @@ footer{
   font-size: 18px;
   position: sticky;
 }
-
-
-
-
 #userpage{
   background-image: url("../images/kittensleeping.jpg");
   height: 100vh;
   background-size: cover; 
   padding-top: 2px;
 }
+/* .bguser{
+  background-image: url("../images/kittensleeping.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	overflow: auto;
+	background-attachment: fixed;
+} */
 
 #petInsert {
   background-color: rgba(252, 252, 252, 0.30);
@@ -132,13 +137,6 @@ h2 {
 
 .card {
   max-width: 50%;
-}
-
-body,
-html {
-	height: 100%;
-	margin: 0;
-	font-family: 'Merriweather', serif;
 }
 
 /* background image container*/

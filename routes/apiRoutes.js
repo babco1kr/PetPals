@@ -62,6 +62,7 @@ module.exports = function(app) {
     }
   });
 
+  // Call for user requests page, Checks for all requests and completed requests
   app.get("/requests/:user", function(req, res) {
     db.Holding.findAll({
       where: {
@@ -89,6 +90,7 @@ module.exports = function(app) {
     });
   });
 
+  // Call for when a user selects to sit a pet, adds it to the holding table and removes it from the pets table
   app.get("/apis/pet_info/:id/:user/:name", function(req, res) {
     db.Pet.findAll({
       where: {
@@ -120,6 +122,7 @@ module.exports = function(app) {
       });
     });
   });
+
   //takes info from holding table and moves it back into pets table if request is denied.
   app.get("/api/deny/:id", function(req, res) {
     db.Holding.findAll({
@@ -150,7 +153,7 @@ module.exports = function(app) {
     });
   });
 
-  //Call for approving Sitting request
+  //Call for approving Sitting request, removes it from holding and adds needed info to complete table
   app.get("/api/approve/:id", function(req, res) {
     db.Holding.findAll({
       where: {
@@ -190,8 +193,7 @@ module.exports = function(app) {
     });
   });
 
-  //sequelize statements for user
-  // "/user/:id"
+  // Call for getting user info, it gets all user pets
   app.get("/user/:id", function(req, res) {
     //This makes sure the current user can only access their user page
     if (req.user.id.toString() === req.params.id.toString()) {
@@ -208,7 +210,7 @@ module.exports = function(app) {
     }
   });
 
-  //sequelize search type for a search filter
+  //sequelize search type for a search filter, no location required
   app.get("/search/:page/:type", function(req, res) {
     var page = req.params.page - 1;
     db.Pet.findAll({
@@ -243,8 +245,7 @@ module.exports = function(app) {
     });
   });
 
-
-  // Call to add Pet to the database
+  // Call to add new Pet to the database
   app.post("/api/pets", function(req, res) {
     db.Pet.create({
       petName: req.body.petName,

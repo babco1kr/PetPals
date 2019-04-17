@@ -8,9 +8,19 @@
   max-width: 20%;
   max-height: 30%;
 }
+
+.userPetImage {
+  max-width: 175px;
+  max-height: 175px;
+}
+
 h1 {
   font-family: 'Lobster', cursive;
 
+}
+
+.searchCard {
+  min-height: 250px;
 }
 
 
@@ -64,15 +74,6 @@ footer{
   background-size: cover; 
   padding-top: 2px;
 }
-/* .bguser{
-  background-image: url("../images/kittensleeping.jpg");
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	overflow: auto;
-	background-attachment: fixed;
-} */
 
 #petInsert {
   background-color: rgba(252, 252, 252, 0.30);
@@ -106,6 +107,11 @@ ul.dropdown-content.select-dropdown li span {
 
 ::placeholder {
   color: black; 
+}
+
+.searchPhoto {
+  max-height: 175px;
+  max-width: 175px;
 }
 
 label {
@@ -147,16 +153,6 @@ h2 {
 .card {
   max-width: 50%;
 }
-
-
-/* body,
-html {
-	height: 100%;
-	margin: 0;
-	font-family: 'Merriweather', serif;
-} */
-
-
 
 /* background image container*/
 .bg {
